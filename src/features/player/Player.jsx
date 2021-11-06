@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetTracksQuery } from "../../app/music_api/musicApi";
+import { useGetTrackListQuery } from "../../app/music_api/musicApi";
 import { useState, useEffect } from "react";
 import PlayerDetails from "./PlayerDetails";
 import PlayerControls from "./PlayerControls";
@@ -12,7 +12,7 @@ import shuffle from "../../utils/shuffle";
 
 
 function Player() {
-    const { data, isLoading, error } = useGetTracksQuery()
+    const { data, isLoading, error } = useGetTrackListQuery()
     const [currentSongIndex, setCurrentSongIndex] = useState(0)
     const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1)
 
