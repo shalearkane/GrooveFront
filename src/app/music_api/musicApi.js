@@ -69,4 +69,9 @@ export const {
     useGetArtistListQuery,
     useGetSpecificArtistQuery,
     useGetGenreListQuery,
-    useGetSpecificGenreQuery } = musicApi;
+    useGetSpecificGenreQuery,
+    useGetLikedSongsQuery,
+    useLikeSongQuery,
+    useUnlikeSongQuery,
+    useGetHistoryQuery,
+    useAddToHistoryQuery } = musicApi;
