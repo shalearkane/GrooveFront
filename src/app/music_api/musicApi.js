@@ -32,14 +32,21 @@ export const musicApi = createApi({
                 url: `likedsongs/`,
             })
         }),
-        likeSong: builder.query({
+        isLiked: builder.query({
+            query: (trackid) => ({
+                method: "get",
+                url: `likedsongs/`,
+                body: `{"track" : "${trackid}"}`,
+            })
+        }),
+        likeSong: builder.mutation({
             query: (trackid) => ({
                 method: "post",
                 url: `likedsongs/`,
                 body: `{"track" : "${trackid}"}`
             })
         }),
-        unlikeSong: builder.query({
+        unlikeSong: builder.mutation({
             query: (trackid) => ({
                 method: "delete",
                 url: `likedsongs`,
@@ -52,7 +59,7 @@ export const musicApi = createApi({
                 url: `history/`,
             })
         }),
-        addToHistory: builder.query({
+        addToHistory: builder.mutation({
             query: (trackid) => ({
                 method: "post",
                 url: `history/`,
@@ -71,7 +78,11 @@ export const {
     useGetGenreListQuery,
     useGetSpecificGenreQuery,
     useGetLikedSongsQuery,
+    useIsLikedQuery,
     useLikeSongQuery,
     useUnlikeSongQuery,
     useGetHistoryQuery,
     useAddToHistoryQuery } = musicApi;
+
+// Mutations are used to send data updates to the server and apply the changes to the local cache. 
+// Mutations can also invalidate cached data and force re-fetches.
