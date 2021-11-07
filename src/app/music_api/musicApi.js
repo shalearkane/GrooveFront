@@ -79,10 +79,10 @@ export const {
     useGetSpecificGenreQuery,
     useGetLikedSongsQuery,
     useIsLikedQuery,
-    useLikeSongQuery,
-    useUnlikeSongQuery,
+    useLikeSongMutation,
+    useUnlikeSongMutation,
     useGetHistoryQuery,
-    useAddToHistoryQuery } = musicApi;
+    useAddToHistoryMutation } = musicApi;
 
 // Mutations are used to send data updates to the server and apply the changes to the local cache. 
 // Mutations can also invalidate cached data and force re-fetches.
