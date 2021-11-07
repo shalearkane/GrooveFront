@@ -34,32 +34,30 @@ export const musicApi = createApi({
             }),
             providesTags: (result, error, arg) =>
                 result
-                    ? [...result.map(({ id }) => ({ type: 'Like', id })), 'Post']
-                    : ['Post'],
+                    ? [...result.map(({ id }) => ({ type: 'Like', id })), 'Like']
+                    : ['Like'],
             // id here refers to the id of track in json data, so it is uniquely tagged
         }),
         isLiked: builder.query({
             query: (trackid) => ({
-                method: "get",
+                method: "put",
                 url: `likedsongs/`,
-                body: `{"track" : "${trackid}"}`,
-            }),
-            invalidatesTags: (result, error, arg) => [{ type: 'Like', id: arg }],
-            // here arg refers to trackid I suppose
+                data: { track: trackid },
+            })
         }),
         likeSong: builder.mutation({
             query: (trackid) => ({
                 method: "post",
                 url: `likedsongs/`,
-                body: `{"track" : "${trackid}"}`
+                data: { track: trackid },
             }),
             invalidatesTags: (result, error, arg) => [{ type: 'Like', id: arg }],
         }),
         unlikeSong: builder.mutation({
             query: (trackid) => ({
                 method: "delete",
-                url: `likedsongs`,
-                body: `{"track" : "${trackid}"}`
+                url: `likedsongs/`,
+                data: { track: trackid },
             }),
             invalidatesTags: (result, error, arg) => [{ type: 'Like', id: arg }],
         }),
@@ -74,7 +72,7 @@ export const musicApi = createApi({
             query: (trackid) => ({
                 method: "post",
                 url: `history/`,
-                body: `{"track" : "${trackid}"}`
+                data: { track: trackid },
             }),
             invalidatesTags: ['History'],
         }),
