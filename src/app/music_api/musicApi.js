@@ -9,6 +9,9 @@ export const musicApi = createApi({
         getTrackList: builder.query({
             query: () => `tracks/`,
         }),
+        getSpecificTrack: builder.query({
+            query: (id) => `tracks/${id}`,
+        }),
         getAlbumList: builder.query({
             query: () => `albums/`
         }),
@@ -81,6 +84,7 @@ export const musicApi = createApi({
 
 export const {
     useGetTrackListQuery,
+    useGetSpecificTrackQuery,
     useGetAlbumListQuery,
     useGetSpecificAlbumQuery,
     useGetArtistListQuery,

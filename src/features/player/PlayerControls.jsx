@@ -2,7 +2,7 @@ import React from "react";
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import './rhap.css';
 import { useDispatch, useSelector } from "react-redux";
-import { nextTrack, prevTrack, selectCurrentlyPlayingIndex, selectQueue } from "../../app/music_api/musicSlice";
+import { nextTrack, prevTrack, playTrack, pauseTrack, selectCurrentlyPlayingIndex, selectQueue } from "../../app/music_api/musicSlice";
 import styles from './PlayerControls.module.css'
 
 const RhapEmpty = (src) => {
@@ -65,9 +65,11 @@ function PlayerControls() {
                         RHAP_UI.PROGRESS_BAR,
                     ]
                 }
-                onClickPrevious={() => { dispatch(prevTrack()) }}
-                onClickNext={() => { dispatch(nextTrack()) }}
-                onEnded={() => { dispatch(nextTrack()) }}
+                onPlay={() => dispatch(playTrack())}
+                onPause={() => dispatch(pauseTrack())}
+                onClickPrevious={() => dispatch(prevTrack())}
+                onClickNext={() => dispatch(nextTrack())}
+                onEnded={() => dispatch(nextTrack())}
             />
         </div>
     )

@@ -1,7 +1,6 @@
 import Player from '../player/Player';
 import RightSide from '../rightSide/RightSide';
 import { Drawer, Box } from '@mui/material';
-import { bgcolor } from '@mui/system';
 
 const drawerWidth = 300;
 

@@ -44,11 +44,20 @@ export const queueSlice = createSlice({
             if (temp < 0)
                 temp = state.queue.length - 1
             state.currentlyPlayingIndex = temp
+        },
+        playTrack: (state) => {
+            state.isPlaying = true
+        },
+        pauseTrack: (state) => {
+            state.isPlaying = false
+        },
+        setPlayIndex: (state, action) => {
+            state.currentlyPlayingIndex = action.payload
         }
     },
 })
 
-export const { addTrack, removeTrack, clearQueue, nextTrack, prevTrack } = queueSlice.actions
+export const { addTrack, removeTrack, clearQueue, nextTrack, prevTrack, playTrack, pauseTrack } = queueSlice.actions
 
 export const selectQueue = (state) => state.queue.queue
 export const selectIsPlaying = (state) => state.queue.isPlaying
