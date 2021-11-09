@@ -17,11 +17,22 @@ const initialState = user
 export const getToken = createAsyncThunk(
     'auth/getToken',
     async (formState) => {
-        const data = await authAPI.login(formState.email, formState.password);
+        const data = await authAPI.signin(formState.email, formState.password);
         // login returns response.data
         return data
     }
 
+)
+
+export const signUp = createAsyncThunk(
+    'auth/signUp',
+    async (formState) => {
+        console.log(formState)
+        const data = await authAPI.signup(formState.username, formState.email, formState.password);
+        // register returns response.data
+        console.log(data)
+        return data
+    }
 )
 
 export const logout = createAsyncThunk(

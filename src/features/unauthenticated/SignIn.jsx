@@ -46,7 +46,6 @@ const theme = createTheme();
 
 export const SignIn = () => {
     const dispatch = useDispatch();
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);

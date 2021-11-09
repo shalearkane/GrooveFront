@@ -3,7 +3,7 @@ import axios from "axios";
 const API_URL = "http://127.0.0.1:8000/api/";
 
 class AuthService {
-    async login(email, password) {
+    async signin(email, password) {
         const response = await axios
             .post(API_URL + "token/obtain/", { email, password });
         if (response.data.access) {
@@ -16,12 +16,14 @@ class AuthService {
         localStorage.removeItem("user");
     }
 
-    register(username, email, password) {
-        return axios.post(API_URL + "signup", {
+    async signup(username, email, password) {
+        const response = await axios.post(API_URL + "user/create/", {
             username,
             email,
             password,
         });
+        console.log(response.data)
+        return response.data
     }
 }
 
