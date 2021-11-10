@@ -5,7 +5,7 @@ import PlayerDetails from "./PlayerDetails";
 import PlayerControls from "./PlayerControls";
 import PlayerQueue from "./PlayerQueue";
 import styles from './Player.module.css'
-import { addTrack, selectQueue } from "../../app/music_api/musicSlice";
+import { addMultipleTracks, selectQueue } from "../../app/music_api/musicSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import shuffle from "../../utils/shuffle";
@@ -36,7 +36,7 @@ function Player() {
         console.log(data)
         const temp = JSON.parse(JSON.stringify(data));
         shuffle(temp)
-        dispatch(addTrack(temp))
+        dispatch(addMultipleTracks(temp))
     }
 
     if (isLoading) {

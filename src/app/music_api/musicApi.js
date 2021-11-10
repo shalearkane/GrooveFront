@@ -10,25 +10,25 @@ export const musicApi = createApi({
             query: () => `tracks/`,
         }),
         getSpecificTrack: builder.query({
-            query: (id) => `tracks/${id}`,
+            query: (id) => `tracks/${id}/`,
         }),
         getAlbumList: builder.query({
             query: () => `albums/`
         }),
         getSpecificAlbum: builder.query({
-            query: (id) => `albums/${id}`
+            query: (id) => `albums/${id}/`
         }),
         getArtistList: builder.query({
             query: () => `artists/`
         }),
         getSpecificArtist: builder.query({
-            query: (id) => `artists/${id}`
+            query: (id) => `artists/${id}/`
         }),
         getGenreList: builder.query({
             query: () => `genres/`
         }),
         getSpecificGenre: builder.query({
-            query: (id) => `genres/${id}`
+            query: (id) => `genres/${id}/`
         }),
         getLikedSongs: builder.query({
             query: () => ({
