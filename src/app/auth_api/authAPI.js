@@ -14,6 +14,7 @@ class AuthService {
 
     logout() {
         localStorage.removeItem("user");
+        localStorage.removeItem("queue");
     }
 
     async signup(username, email, password) {
