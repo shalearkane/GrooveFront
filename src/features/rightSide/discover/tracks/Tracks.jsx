@@ -19,27 +19,33 @@ export default function TrackList() {
     }
     console.log(data)
     return (
-        <List sx={{ width: 600, bgcolor: '#35303d' }}>
-          {data.map((track) => {
-            return (
-              <ListItem>
-                <ListItemButton role={undefined} dense>
-                <PlayButton trackid = {track.id} edge="start" aria-label="play" />
-                  <ListItemText 
-                  className={styles.list}
-                    primary={track.track_title}
-                    secondary={<div color='white'>{track.album.album_title}</div>}/>
-                  <ListItemIcon>
-                    <LikeButton
-                      trackid = {track.id}
-                      edge="end"
-                    />
-                    {/* <TrackActions/> */}
-                  </ListItemIcon>
-                </ListItemButton>
-              </ListItem>
-            );
-          })}
+        <List sx={{
+            width: '100vh',
+            height: '75vh',
+            backgroundColor: 'rgba(53, 48, 61, 0.3)',
+            // bgcolor: '#35303d',
+            overflowY: 'scroll'
+        }}>
+            {data.map((track) => {
+                return (
+                    <ListItem>
+                        <ListItemButton role={undefined} dense>
+                            <PlayButton trackid={track.id} edge="start" aria-label="play" />
+                            <ListItemText
+                                // className={styles.list}
+                                primary={track.track_title}
+                                secondary={<div color='white'>{track.album.album_title}</div>} />
+                            <ListItemIcon>
+                                <LikeButton
+                                    trackid={track.id}
+                                    edge="end"
+                                />
+                                {/* <TrackActions/> */}
+                            </ListItemIcon>
+                        </ListItemButton>
+                    </ListItem>
+                );
+            })}
         </List>
-  );
+    );
 }

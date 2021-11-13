@@ -16,109 +16,110 @@ import { useDispatch } from 'react-redux';
 import { addMultipleTracks } from '../../../../app/music_api/musicSlice';
 
 function SwipableDrawer(props) {
-  const [state, setState] = React.useState({
-    right: false,
-  });
-  var albumid = props.albumid;
-  const { data, isLoading, error } = useGetSpecificAlbumQuery(albumid);
-  const dispatch = useDispatch()
-  if (isLoading) {
-    return (<div>Loading...</div>);
-  }
+    const [state, setState] = React.useState({
+        right: false,
+    });
+    var albumid = props.albumid;
+    const { data, isLoading, error } = useGetSpecificAlbumQuery(albumid);
+    const dispatch = useDispatch()
+    if (isLoading) {
+        return (<div>Loading...</div>);
+    }
 
-  if (error) {
-    return (<div>Some error</div>);
-  }
-  console.log(data);
+    if (error) {
+        return (<div>Some error</div>);
+    }
+    console.log(data);
 
-  function toggleDrawer(anchor, open) {
-    return (event) => {
-      if (event &&
-        event.type === 'keydown' &&
-        (event.key === 'Tab' || event.key === 'Shift')) {
-        return;
-      }
+    function toggleDrawer(anchor, open) {
+        return (event) => {
+            if (event &&
+                event.type === 'keydown' &&
+                (event.key === 'Tab' || event.key === 'Shift')) {
+                return;
+            }
 
-      setState({ ...state, [anchor]: open });
-    };
-  }
+            setState({ ...state, [anchor]: open });
+        };
+    }
 
-  function clickHandler(){
-    var tracks = data["track"].map((track) => {
-      var t = JSON.parse(JSON.stringify(track)) 
-      t['audio_file'] = `http://127.0.0.1:8000${track['audio_file']}`
-      t['album']['album_logo'] = `http://127.0.0.1:8000${track['album']['album_logo']}`
-      return t
-      })
-    const temp = JSON.parse(JSON.stringify(tracks));
-    dispatch(addMultipleTracks(temp))
-  }
+    function clickHandler() {
+        var tracks = data["track"].map((track) => {
+            var t = JSON.parse(JSON.stringify(track))
+            t['audio_file'] = `http://127.0.0.1:8000${track['audio_file']}`
+            t['album']['album_logo'] = `http://127.0.0.1:8000${track['album']['album_logo']}`
+            return t
+        })
+        const temp = JSON.parse(JSON.stringify(tracks));
+        dispatch(addMultipleTracks(temp))
+    }
 
-  const list = (anchor) => (
-    <Box
-      className={styles.drawer}
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 350 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-      // background='black'
-    >
-      <div2>
-        {[data].map((album) => {
-          return (
-            <>
-            <div className={styles.space}>{album.album_title}</div>
-            <Button className={styles.button} onClick={clickHandler} >Add to Queue</Button>
-            <div className={styles.space} key={album.album_logo}><img
-              src={`http://127.0.0.1:8000${album.album_logo}`}
-              srcSet={`http://127.0.0.1:8000${album.album_logo}`}
-              alt={album.album_title}
-              loading="lazy" /></div>
-              <List sx={{ width: '100%', maxWidth: 400, bgcolor: '#0099ff' }}>
-                {
-                  album.track.map((track) => 
-                  <ListItem>
-                  <ListItemButton role={undefined} dense>
-                  <PlayButton trackid = {track.id} edge="start" aria-label="play" />
-                    <ListItemText 
-                      primary={track.track_title}
-                      secondary={track.album.album_title}
-                      
-                      edge="centre"
-                    />
-                    <ListItemIcon>
-                      <LikeButton
-                        trackid = {track.id}
-                        edge="end"
-                      />
-                    </ListItemIcon>
-                  </ListItemButton>
-                </ListItem>)
-                }
-              </List>
-              </>
-          );
-        })}
-      </div2>
+    const list = (anchor) => (
+        <Box
+            className={styles.drawer}
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 350 }}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+        // background='black'
+        >
+            <div2>
+                {[data].map((album) => {
+                    return (
+                        <Box>
+                            <div className={styles.space}>{album.album_title}</div>
+                            <Button className={styles.button} onClick={clickHandler} >Add to Queue</Button>
+                            <div className={styles.space} key={album.album_logo}><img
+                                src={`http://127.0.0.1:8000${album.album_logo}`}
+                                srcSet={`http://127.0.0.1:8000${album.album_logo}`}
+                                width='300px'
+                                alt={album.album_title}
+                                loading="lazy" /></div>
+                            <List sx={{ width: '100%', maxWidth: 400, bgcolor: '#0099ff' }}>
+                                {
+                                    album.track.map((track) =>
+                                        <ListItem>
+                                            <ListItemButton role={undefined} dense>
+                                                <PlayButton trackid={track.id} edge="start" aria-label="play" />
+                                                <ListItemText
+                                                    primary={track.track_title}
+                                                    secondary={track.album.album_title}
 
-    </Box>
-  );
-  return (
-    <div>
-      <Button
-        // aria-label={`info about ${album.album_title}`}
-        onClick={toggleDrawer('right', true)}><InfoIcon /></Button>
-      <SwipeableDrawer
-        anchor='right'
-        open={state['right']}
-        color='black'
-        onClose={toggleDrawer('right', false)}
-        onOpen={toggleDrawer('right', true)}
-      >
-        {list('right')}
-      </SwipeableDrawer>
-    </div>
-  );
+                                                    edge="centre"
+                                                />
+                                                <ListItemIcon>
+                                                    <LikeButton
+                                                        trackid={track.id}
+                                                        edge="end"
+                                                    />
+                                                </ListItemIcon>
+                                            </ListItemButton>
+                                        </ListItem>)
+                                }
+                            </List>
+                        </Box>
+                    );
+                })}
+            </div2>
+
+        </Box>
+    );
+    return (
+        <div>
+            <Button
+                // aria-label={`info about ${album.album_title}`}
+                onClick={toggleDrawer('right', true)}><InfoIcon /></Button>
+            <SwipeableDrawer
+                anchor='right'
+                open={state['right']}
+                color='black'
+                onClose={toggleDrawer('right', false)}
+                onOpen={toggleDrawer('right', true)}
+            >
+                {list('right')}
+            </SwipeableDrawer>
+        </div>
+    );
 }
 
 export default SwipableDrawer

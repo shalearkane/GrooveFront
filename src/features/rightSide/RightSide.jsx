@@ -24,7 +24,7 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ p: 1 }}>
                     {children}
                 </Box>
             )}
@@ -53,7 +53,7 @@ export default function RightSide() {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%', p: 0 }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
                     <Tab style={{ fontWeight: "bold", color: 'white', edge: "start" }} icon={<Searchicon />} iconPosition="start" label="SEARCH" />
@@ -71,30 +71,5 @@ export default function RightSide() {
                 <Library />
             </TabPanel>
         </Box>
-    );
-
-    return (
-        <div className={styles.myDIV}>
-            <AppBar position="static" >
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    aria-label="icon position tabs example"
-                >
-                    <Tab style={{ fontWeight: "bold", color: 'black', edge: "start" }} icon={<Searchicon />} iconPosition="start" label="SEARCH" />
-                    <Tab style={{ fontWeight: "bold", color: 'black', edge: "middle" }} icon={<Discovericon />} iconPosition="start" label="Discover" />
-                    <Tab style={{ fontWeight: "bold", color: 'black', edge: "end" }} edge="end" icon={<Libraryicon />} iconPosition="start" label="Library" />
-                </Tabs>
-            </AppBar>
-            <TabPanel value={value} index={0}>
-                <Search />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <Discover />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                <Library />
-            </TabPanel>
-        </div>
     );
 }
