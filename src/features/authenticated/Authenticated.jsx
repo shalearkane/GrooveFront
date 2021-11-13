@@ -45,7 +45,12 @@ function AuthenticatedApp() {
             </Drawer>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 1, overflowY: 'hidden' }}
+                sx={{
+                    flexGrow: 1,
+                    p: 1,
+                    overflowY: 'hidden',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                }}
             >
                 <RightSide />
             </Box>

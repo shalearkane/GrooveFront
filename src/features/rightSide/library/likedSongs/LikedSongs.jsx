@@ -22,14 +22,16 @@ export default function TrackList() {
         <List sx={{
             width: '100vh',
             height: '75vh',
-            backgroundColor: 'rgba(53, 48, 61, 0.3)',
-            // bgcolor: '#35303d',
-            overflowY: 'scroll'
+            overflowY: 'auto'
         }}>
             {data.map((track) => {
                 return (
                     <ListItem>
-                        <ListItemButton role={undefined} dense>
+                        <ListItemButton role={undefined} dense
+                            sx={{
+                                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                borderRadius: "20px",
+                            }}>
                             <PlayButton trackid={track.track.id} edge="start" aria-label="play" />
                             <ListItemText
                                 // className={styles.list}

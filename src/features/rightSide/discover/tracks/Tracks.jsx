@@ -20,16 +20,18 @@ export default function TrackList() {
     console.log(data)
     return (
         <List sx={{
-            width: '100vh',
-            height: '75vh',
-            backgroundColor: 'rgba(53, 48, 61, 0.3)',
-            // bgcolor: '#35303d',
+            width: "60vw",
+            height: "84vh",
             overflowY: 'scroll'
         }}>
             {data.map((track) => {
                 return (
                     <ListItem>
-                        <ListItemButton role={undefined} dense>
+                        <ListItemButton role={undefined} dense
+                            sx={{
+                                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                borderRadius: "20px",
+                            }}>
                             <PlayButton trackid={track.id} edge="start" aria-label="play" />
                             <ListItemText
                                 // className={styles.list}
