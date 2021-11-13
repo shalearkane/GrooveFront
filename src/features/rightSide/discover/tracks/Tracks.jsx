@@ -7,7 +7,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { useGetTrackListQuery } from '../../../../app/music_api/musicApi';
 import LikeButton from '../../../buttons/LikeButton';
 import PlayButton from '../../../buttons/PlayButton';
-import styles from './Tracks.module.css'
 
 export default function TrackList() {
     const { data, isLoading, error } = useGetTrackListQuery()

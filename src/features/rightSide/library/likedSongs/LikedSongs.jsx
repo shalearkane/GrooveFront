@@ -4,10 +4,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { useGetLikedSongsQuery, useGetTrackListQuery } from '../../../../app/music_api/musicApi';
+import { useGetLikedSongsQuery } from '../../../../app/music_api/musicApi';
 import LikeButton from '../../../buttons/LikeButton';
 import PlayButton from '../../../buttons/PlayButton';
-import styles from '../../discover/tracks/Tracks.module.css'
 
 export default function TrackList() {
     const { data, isLoading, error } = useGetLikedSongsQuery()

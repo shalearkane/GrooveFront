@@ -9,8 +9,6 @@ import Discover from './discover/Discover';
 import Search from './search/Search';
 import Library from './library/Library';
 import Box from '@mui/material/Box';
-import { AppBar } from '@mui/material';
-import styles from './RightSide.module.css'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -58,7 +56,7 @@ export default function RightSide() {
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
                     <Tab style={{ fontWeight: "bold", color: 'white', edge: "start" }} icon={<Searchicon />} iconPosition="start" label="SEARCH" />
                     <Tab style={{ fontWeight: "bold", color: 'white', edge: "middle" }} icon={<Discovericon />} iconPosition="start" label="Discover" />
-                    <Tab style={{ fontWeight: "bold", color: 'white', edge: "end" }} edge="end" icon={<Libraryicon />} iconPosition="start" label="Library" />
+                    <Tab style={{ fontWeight: "bold", color: 'white', edge: "end" }} icon={<Libraryicon />} iconPosition="start" label="Library" />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
