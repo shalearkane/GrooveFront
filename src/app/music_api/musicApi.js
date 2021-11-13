@@ -79,6 +79,24 @@ export const musicApi = createApi({
             }),
             invalidatesTags: ['History'],
         }),
+        searchTrack: builder.query({
+            query: (search_term) => ({
+                method: "get",
+                url: `search/track/?search=${search_term}`
+            })
+        }),
+        searchAlbum: builder.query({
+            query: (search_term) => ({
+                method: "get",
+                url: `search/album/?search=${search_term}`
+            })
+        }),
+        searchArtist: builder.query({
+            query: (search_term) => ({
+                method: "get",
+                url: `search/artist/?search=${search_term}`
+            })
+        })
     })
 })
 
@@ -96,7 +114,10 @@ export const {
     useLikeSongMutation,
     useUnlikeSongMutation,
     useGetHistoryQuery,
-    useAddToHistoryMutation } = musicApi;
+    useAddToHistoryMutation,
+    useSearchTrackQuery,
+    useSearchAlbumQuery,
+    useSearchArtistQuery } = musicApi;
 
-// Mutations are used to send data updates to the server and apply the changes to the local cache. 
+// Mutations are used to send data updates to the server and apply the changes to the local cache.
 // Mutations can also invalidate cached data and force re-fetches.

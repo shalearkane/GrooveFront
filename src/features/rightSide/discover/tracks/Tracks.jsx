@@ -8,22 +8,15 @@ import { useGetTrackListQuery } from '../../../../app/music_api/musicApi';
 import LikeButton from '../../../buttons/LikeButton';
 import PlayButton from '../../../buttons/PlayButton';
 
-export default function TrackList() {
-    const { data, isLoading, error } = useGetTrackListQuery()
-    if (isLoading) {
-        return (<div>Loading...</div>)
-    }
-    if (error) {
-        return (<div>Some error</div>)
-    }
-    console.log(data)
+export function TrackList(props) {
+    if (typeof props.tracks === "undefined") { return (<div>No results</div>) }
     return (
         <List sx={{
             width: "60vw",
             height: "84vh",
-            overflowY: 'scroll'
+            overflowY: 'auto'
         }}>
-            {data.map((track) => {
+            {props.tracks.map((track) => {
                 return (
                     <ListItem>
                         <ListItemButton role={undefined} dense
@@ -48,5 +41,19 @@ export default function TrackList() {
                 );
             })}
         </List>
+    )
+}
+
+export default function Tracks() {
+    const { data, isLoading, error } = useGetTrackListQuery()
+    if (isLoading) {
+        return (<div>Loading...</div>)
+    }
+    if (error) {
+        return (<div>Some error</div>)
+    }
+    console.log(data)
+    return (
+        <TrackList tracks={data} />
     );
 }

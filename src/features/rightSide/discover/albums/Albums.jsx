@@ -5,16 +5,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { useGetAlbumListQuery } from '../../../../app/music_api/musicApi';
 import AlbumDetails from './AlbumDetails'
 
-export default function TitlebarImageList() {
-    const { data, isLoading, error } = useGetAlbumListQuery()
-    if (isLoading) {
-        return (<div>Loading...</div>)
-    }
-
-    if (error) {
-        return (<div>Some error</div>)
-    }
-    console.log(data)
+export function AlbumsList(props) {
     return (
         <ImageList
             cols={3}
@@ -31,7 +22,7 @@ export default function TitlebarImageList() {
                 // 100px 100px 80px rgba(0, 0, 0, 0.07)`,
                 padding: "10px"
             }}>
-            {data.map((album) => (
+            {props.albums.map((album) => (
                 <ImageListItem key={album.album_logo}
                     sx={{
                         padding: '20px',
@@ -59,4 +50,17 @@ export default function TitlebarImageList() {
             ))}
         </ImageList>
     );
+}
+
+export default function Albums() {
+    const { data, isLoading, error } = useGetAlbumListQuery()
+    if (isLoading) {
+        return (<div>Loading...</div>)
+    }
+
+    if (error) {
+        return (<div>Some error</div>)
+    }
+    console.log(data)
+    return (<AlbumsList albums={data} />)
 }
