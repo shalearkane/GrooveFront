@@ -1,6 +1,19 @@
 import Player from '../player/Player';
 import RightSide from '../rightSide/RightSide';
 import { Drawer, Box } from '@mui/material';
+import { keyframes } from '@mui/styled-engine';
+
+const undulate = keyframes`
+0% {
+    background-position: 0% 50%;
+}
+50% {
+    background-position: 100% 50%;
+}
+100% {
+    background-position: 0% 50%;
+}
+`
 
 const drawerWidth = 300;
 
@@ -9,7 +22,10 @@ function AuthenticatedApp() {
         <Box
             sx={{
                 display: 'flex',
-                background: 'linear-gradient(to right bottom, #430089, #82ffa1)'
+                height: '100vh',
+                background: 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+                backgroundSize: '400% 400%',
+                animation: `${undulate} 15s ease infinite`
             }}
         >
             <Drawer
