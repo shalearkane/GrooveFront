@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Searchicon from '@material-ui/icons//Search';
+import Searchicon from '@mui/icons-material/Search';
 import Libraryicon from '@mui/icons-material/LibraryAdd';
 import Discovericon from '@mui/icons-material/MusicNote';
 import Discover from './discover/Discover';
 import Search from './search/Search';
 import Library from './library/Library';
-import Box from "@material-ui/core/Box";
-import AppBar from "@material-ui/core/AppBar";
+import Box from '@mui/material/Box';
+import { AppBar } from '@mui/material';
 import styles from './RightSide.module.css'
 
 function TabPanel(props) {
