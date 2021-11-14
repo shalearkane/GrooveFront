@@ -18,7 +18,7 @@ export function TrackList(props) {
         }}>
             {props.tracks.map((track) => {
                 return (
-                    <ListItem>
+                    <ListItem key={track.id}>
                         <ListItemButton role={undefined} dense
                             sx={{
                                 backgroundColor: 'rgba(0, 0, 0, 0.1)',

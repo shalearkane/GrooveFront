@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 
 const PlayButton = (props) => {
     var trackid = props.trackid
+    console.log(trackid)
     const dispatch = useDispatch()
     const isPlaying = useSelector(selectIsPlaying)
     const currentPlayIndex = useSelector(selectCurrentlyPlayingIndex)

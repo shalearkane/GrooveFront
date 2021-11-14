@@ -51,7 +51,7 @@ export default function VerticalTabs() {
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 sx={{ borderRight: 2, borderColor: 'divider' }}
-                textColor="white"
+                color="white"
             >
                 <Tab label="Albums" />
                 <Tab label="Tracks" />

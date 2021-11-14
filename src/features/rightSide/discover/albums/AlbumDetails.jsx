@@ -78,7 +78,7 @@ function SwipableDrawer(props) {
                             <List sx={{ width: '100%', maxWidth: 400, bgcolor: '#0099ff' }}>
                                 {
                                     album.track.map((track) =>
-                                        <ListItem>
+                                        <ListItem key={track.id}>
                                             <ListItemButton role={undefined} dense>
                                                 <PlayButton trackid={track.id} edge="start" aria-label="play" />
                                                 <ListItemText

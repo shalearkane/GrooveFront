@@ -12,18 +12,10 @@ export function AlbumList(props) {
             sx={{
                 width: "60vw",
                 height: "84vh",
-                // backgroundColor: 'rgba(53, 48, 61, 0.3)',
-                // boxShadow:
-                //     `2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-                // 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-                // 12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-                // 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-                // 41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-                // 100px 100px 80px rgba(0, 0, 0, 0.07)`,
                 padding: "10px"
             }}>
             {props.albums.map((album) => (
-                <ImageListItem key={album.album_logo}
+                <ImageListItem key={album.id}
                     sx={{
                         padding: '20px',
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
