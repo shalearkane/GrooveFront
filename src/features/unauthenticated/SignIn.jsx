@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import { getToken } from '../../app/auth_api/authSlice'
 import Avatar from '@mui/material/Avatar';

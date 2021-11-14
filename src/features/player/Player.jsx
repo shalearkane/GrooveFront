@@ -17,19 +17,19 @@ function Player() {
     const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1)
 
     const dispatch = useDispatch()
-    const tracks = useSelector(selectQueue)
+    const queue = useSelector(selectQueue)
 
     useEffect(() => {
         setNextSongIndex(() => {
-            if (tracks) {
-                if (currentSongIndex + 1 > tracks.length - 1) {
+            if (queue) {
+                if (currentSongIndex + 1 > queue.length - 1) {
                     return 0
                 } else {
                     return currentSongIndex + 1
                 }
             }
         })
-    }, [currentSongIndex, tracks])
+    }, [currentSongIndex, queue])
 
 
     const makeQueue = () => {
@@ -47,14 +47,14 @@ function Player() {
         return (<div>Some error</div>)
     }
 
-    if (typeof tracks === 'undefined') {
+    if (typeof queue === 'undefined') {
         return (<div>No tracks</div>)
     }
     return (
         <div className={styles.player}>
             <button onClick={makeQueue} className={styles.button}>Make Queue</button>
             <div className={styles.playerQueue}>
-                <PlayerQueue tracks={tracks} />
+                <PlayerQueue tracks={queue} />
             </div>
             <div className={styles.playerDetails}>
                 <PlayerDetails />

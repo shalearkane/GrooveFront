@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 import { addMultipleTracks } from '../../../../app/music_api/musicSlice';
 
 function SwipableDrawer(props) {
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
         right: false,
     });
     var albumid = props.albumid;

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useGetAlbumListQuery } from '../../../../app/music_api/musicApi';
 import { AlbumList } from './AlbumsList';
 

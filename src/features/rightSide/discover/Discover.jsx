@@ -1,7 +1,7 @@
+import { useState } from "react";
 import Tracks from "./tracks/Tracks";
 import Albums from "./albums/Albums";
 import Artists from "./artists/Artists";
-import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -34,7 +34,7 @@ TabPanel.propTypes = {
 };
 
 export default function VerticalTabs() {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

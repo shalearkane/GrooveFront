@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
@@ -7,7 +7,7 @@ import { useGetSpecificArtistQuery } from '../../../../app/music_api/musicApi';
 import styles from '../albums/Albums.module.css'
 
 function SwipableDrawer(props) {
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
         right: false,
     });
     var artistid = props.artistid;

@@ -103,5 +103,6 @@ export const {
 export const selectQueue = (state) => state.queue.queue
 export const selectIsPlaying = (state) => state.queue.isPlaying
 export const selectCurrentlyPlayingIndex = (state) => state.queue.currentlyPlayingIndex;
+export const selectCurrentTrackData = (state) => state.queue.queue[state.queue.currentlyPlayingIndex]
 
 export default queueSlice.reducer;

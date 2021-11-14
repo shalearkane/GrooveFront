@@ -1,5 +1,5 @@
 import { useGetSpecificTrackQuery } from "../../app/music_api/musicApi";
-import { selectCurrentlyPlayingIndex, selectIsPlaying, selectQueue, addPlayTrack } from "../../app/music_api/musicSlice";
+import { selectIsPlaying, addPlayTrack, selectCurrentTrackData } from "../../app/music_api/musicSlice";
 import IconButton from '@mui/material/IconButton';
 import PlayCircleRoundedIcon from '@mui/icons-material/PlayCircleRounded';
 import PauseCircleRoundedIcon from '@mui/icons-material/PauseCircleRounded';
@@ -15,13 +15,11 @@ const PlayButton = (props) => {
     console.log(trackid)
     const dispatch = useDispatch()
     const isPlaying = useSelector(selectIsPlaying)
-    const currentPlayIndex = useSelector(selectCurrentlyPlayingIndex)
-    const queue = useSelector(selectQueue)
-    const currentTrackId = (queue[currentPlayIndex] !== undefined) ? queue[currentPlayIndex].id : -1
+    const currentTrack = useSelector(selectCurrentTrackData)
+    const currentTrackId = (currentTrack !== undefined) ? currentTrack.id : -1
     const { data, isLoading, error } = useGetSpecificTrackQuery(trackid)
 
     function playHandler() {
-        console.log(currentPlayIndex)
         console.log(currentTrackId)
         console.log("Clicked play")
         dispatch(addPlayTrack(data))

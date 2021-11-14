@@ -1,4 +1,3 @@
-import React from 'react';
 import AuthenticatedApp from './features/authenticated/Authenticated';
 import UnauthenticatedApp from './features/unauthenticated/Unauthenticated';
 
