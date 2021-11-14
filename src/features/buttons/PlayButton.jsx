@@ -1,5 +1,5 @@
 import { useGetSpecificTrackQuery } from "../../app/music_api/musicApi";
-import { addTrack, selectCurrentlyPlayingIndex, selectIsPlaying, selectQueue, setPlayIndex } from "../../app/music_api/musicSlice";
+import { selectCurrentlyPlayingIndex, selectIsPlaying, selectQueue, addPlayTrack } from "../../app/music_api/musicSlice";
 import IconButton from '@mui/material/IconButton';
 import PlayCircleRoundedIcon from '@mui/icons-material/PlayCircleRounded';
 import PauseCircleRoundedIcon from '@mui/icons-material/PauseCircleRounded';
@@ -24,9 +24,7 @@ const PlayButton = (props) => {
         console.log(currentPlayIndex)
         console.log(currentTrackId)
         console.log("Clicked play")
-        dispatch(addTrack(data))
-        let index = queue.findIndex(t => t.id === trackid)
-        dispatch(setPlayIndex(index))
+        dispatch(addPlayTrack(data))
     }
 
     if (isLoading) {
