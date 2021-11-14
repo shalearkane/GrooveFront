@@ -1,13 +1,12 @@
 import { Box } from '@mui/material';
-import { useSearchTrackQuery, useSearchAlbumQuery } from "../../../app/music_api/musicApi"
+import { useSearchTrackQuery } from "../../../app/music_api/musicApi"
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-import { TrackList } from '../discover/tracks/Tracks';
+import { TrackList } from "../discover/tracks/TrackList";
 import { HourglassBottom } from '@mui/icons-material';
-import { AlbumsList } from '../discover/albums/Albums';
 
 function Search() {
     const [trackQuery, setTrackQuery] = useState('asdfgh')

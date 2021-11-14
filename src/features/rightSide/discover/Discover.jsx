@@ -33,13 +33,6 @@ TabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
-    return {
-        id: `vertical-tab-${index}`,
-        'aria-controls': `vertical-tabpanel-${index}`,
-    };
-}
-
 export default function VerticalTabs() {
     const [value, setValue] = React.useState(0);
 
@@ -60,9 +53,9 @@ export default function VerticalTabs() {
                 sx={{ borderRight: 2, borderColor: 'divider' }}
                 textColor="white"
             >
-                <Tab label="Albums" {...a11yProps(0)} />
-                <Tab label="Tracks" {...a11yProps(1)} />
-                <Tab label="Artists" {...a11yProps(2)} />
+                <Tab label="Albums" />
+                <Tab label="Tracks" />
+                <Tab label="Artists" />
             </Tabs>
             <TabPanel value={value} index={0}>
                 <Albums />
